@@ -1,0 +1,3 @@
+CREATE DATABASE digital_library_db_hw20;
+
+DROP DATABASE digital_library_db_hw20;
