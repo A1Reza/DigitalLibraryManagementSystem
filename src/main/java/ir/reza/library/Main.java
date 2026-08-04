@@ -1,10 +1,14 @@
 package ir.reza.library;
 
+import ir.reza.library.util.HibernateUtil;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Digital Library Started");
+        HibernateUtil.getEntityManager();
+
+        System.out.println("Hibernate Started");
 
     }
 }
