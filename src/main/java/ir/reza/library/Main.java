@@ -127,6 +127,7 @@ public class Main {
 
         bookService.delete(book3.getId());
 
+        System.out.println("\nAfter delete:");
         try {
 
             bookService.findById(book3.getId());

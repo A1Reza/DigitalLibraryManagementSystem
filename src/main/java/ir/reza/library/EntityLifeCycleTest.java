@@ -46,15 +46,17 @@ public class EntityLifeCycleTest {
             System.out.println(book);
 
 
-
             // 2. Managed state
 
             em.persist(book);
+            /*book = Managed
+            INSERT = waiting*/
+
+            em.flush();
 
 
             System.out.println("\nAfter persist:");
             System.out.println(book);
-
 
 
             // 3. Modify while Managed
@@ -62,7 +64,6 @@ public class EntityLifeCycleTest {
             book.setPrice(new BigDecimal("120"));
 
             System.out.println("\nChanged price while managed");
-
 
 
             // 4. Detach
@@ -73,13 +74,11 @@ public class EntityLifeCycleTest {
             System.out.println("\nEntity detached");
 
 
-
             // 5. Modify while Detached
 
             book.setPrice(new BigDecimal("150"));
 
             System.out.println("Changed price while detached");
-
 
 
             // 6. Commit
@@ -100,14 +99,12 @@ public class EntityLifeCycleTest {
              */
 
 
-
             // 7. Make Managed again
 
             tx.begin();
 
 
             Book managedBook = em.merge(book);
-
 
 
             // 8. Final change
@@ -118,9 +115,7 @@ public class EntityLifeCycleTest {
             tx.commit();
 
 
-
             System.out.println("\nFinal update saved");
-
 
 
         } catch (Exception e) {
