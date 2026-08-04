@@ -11,7 +11,7 @@ public interface BookService {
     Book save(Book book);
 
 
-    Optional<Book> findById(Long id);
+    Book findById(Long id);
 
 
     List<Book> findAll();

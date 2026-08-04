@@ -11,6 +11,7 @@ import ir.reza.library.service.BookServiceImpl;
 import java.math.BigDecimal;
 
 public class Main {
+    //REZA_ASADIPOUR_HW20_Maktab146
 
 
     public static void main(String[] args) {
@@ -96,8 +97,7 @@ public class Main {
         // Find by id
 
         Book foundBook =
-                bookService.findById(book1.getId())
-                        .orElseThrow();
+                bookService.findById(book1.getId());
 
 
 
@@ -118,7 +118,7 @@ public class Main {
 
         System.out.println("\nAfter update:");
         System.out.println(
-                bookService.findById(foundBook.getId()).get()
+                bookService.findById(foundBook.getId())
         );
 
 
@@ -126,6 +126,16 @@ public class Main {
         // Delete
 
         bookService.delete(book3.getId());
+
+        try {
+
+            bookService.findById(book3.getId());
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        }
 
 
 

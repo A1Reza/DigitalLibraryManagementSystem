@@ -39,7 +39,7 @@
                       value="false"/>
 
             <property name="hibernate.hbm2ddl.auto"
-                      value="update" />
+                      value="create-drop" />
 <!--            <property name="jakarta.persistence.schema-generation.database.action"-->
 <!--                      value="create"/>-->
 
