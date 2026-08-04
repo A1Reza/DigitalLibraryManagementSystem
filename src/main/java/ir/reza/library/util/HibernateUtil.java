@@ -1,10 +1,8 @@
 package ir.reza.library.util;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 public final class HibernateUtil {
@@ -65,6 +63,31 @@ public final class HibernateUtil {
 
             em.close();
 
+        }
+    }
+
+    //Additional features
+
+    public static <T> T read(Function<EntityManager, T> operation) {
+        try (EntityManager em = getEntityManager()) {
+            return operation.apply(em);
+        }
+    }
+
+    public static PersistenceUnitUtil getPersistenceUnitUtil() {
+        return getEntityManagerFactory().getPersistenceUnitUtil();
+    }
+
+    public static void getState(EntityManager em, Object entity) {
+
+        Object id = getPersistenceUnitUtil().getIdentifier(entity);
+
+        if (em.contains(entity)) {
+            System.out.println("MANAGED");
+        } else if (id == null) {
+            System.out.println("TRANSIENT");
+        } else {
+            System.out.println("DETACHED");
         }
     }
 }
