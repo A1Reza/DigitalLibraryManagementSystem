@@ -13,6 +13,9 @@
             org.hibernate.jpa.HibernatePersistenceProvider
         </provider>
 
+        <class>ir.reza.library.entity.Book</class>
+        <class>ir.reza.library.entity.PublisherAddress</class>
+        <class>ir.reza.library.entity.StockStatus</class>
 
         <properties>
 
