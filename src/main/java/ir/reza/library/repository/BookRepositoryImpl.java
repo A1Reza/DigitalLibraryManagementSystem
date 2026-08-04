@@ -2,7 +2,6 @@ package ir.reza.library.repository;
 
 import ir.reza.library.entity.Book;
 import ir.reza.library.util.HibernateUtil;
-import jakarta.persistence.EntityManager;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,9 +32,12 @@ public class BookRepositoryImpl implements BookRepository {
 //            return Optional.ofNullable(book);
 //
 //        });
-        try (EntityManager em = HibernateUtil.getEntityManager()) {
-            return Optional.ofNullable(em.find(Book.class, id));
-        }
+
+//        try (EntityManager em = HibernateUtil.getEntityManager()) {
+//            return Optional.ofNullable(em.find(Book.class, id));
+//        }
+
+        return HibernateUtil.read(em -> Optional.ofNullable(em.find(Book.class, id)));
     }
 
 
